@@ -1,4 +1,4 @@
-#The HuMetricsHSS Values Sorter
+## The HuMetricsHSS Values Sorter
 
 Funded by The Mellon Foundation, the Values Sorter is a self-guided tool to help the user walk through activities using a values set. Users can register for the sorter and create their own values and activities sets to share with their teams. For more information on HuMetricsHSS please visit https://humetricshss.org.
 
