@@ -1,0 +1,9 @@
+.new_advice_submission {
+  .trix-button {
+    width: $rsize-large-1;
+
+    @media (min-width: $screen-width-large-min) {
+      width: $rsize-large-3;
+    }
+  }
+}

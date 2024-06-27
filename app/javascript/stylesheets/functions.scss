@@ -1,0 +1,14 @@
+@function pow($base, $exp) {
+  $result: 1;
+  @for $_ from 1 through $exp {
+    $result: $result * $base;
+  }
+  @return $result;
+}
+
+// Output a color variable in rgb format
+// Firefox needs this for SVGs in data URIs and sass will (almost) always
+// output colors as hex. https://stackoverflow.com/a/15763085
+@function to-rgb($color) {
+  @return 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
+}

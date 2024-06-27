@@ -1,0 +1,32 @@
+<footer>
+  <ul class="footer-links">
+    <li class="copyright">© HuMetricHSS, 2021</li>
+    <li><a class="link--padded" href="https://humetricshss.org/privacy-policy/" target="_blank">Privacy Policy</a></li>
+    <li><a class="link--padded" href="https://humetricshss.org/cookie-policy/" target="_blank">Cookie Policy</a></li>
+    <li><a class="link--padded" href="https://humetricshss.org/about/contact-us/" target="_blank">Contact Us</a></li>
+    <li>
+      <%= mail_to ENV["REPORT_ABUSE_EMAIL_ADDRESS"],
+                  "Report Abuse",
+                  body: [
+                    "Please provide a description of the abuse you witnessed, including the name of the individual",
+                    "and specific content. Include the address of the page if possible."
+                  ].join(" ") %>
+    </li>
+    <% if user_signed_in? %>
+      <li><a class="link--padded" id="guide_btn">Quick Tour</a></li>
+    <% end %>
+
+  </ul>
+
+  <div class="license-image">
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+      <%= image_pack_tag "cc-4-by.png", class: "logo", alt: "Creative Commons License" %>
+    </a>
+  </div>
+  <div class="license-text">
+    Unless otherwise noted, this work is licensed under a
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+      Creative Commons Attribution 4.0 International License.
+    </a>
+  </div>
+</footer>

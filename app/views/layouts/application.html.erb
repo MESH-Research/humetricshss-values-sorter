@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ValuesSorter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Values Sorter</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <%= render "shared/banner" %>
+      <%= render "shared/guide" %>
+      <div class="flash-messages">
+        <% if flash[:alert] %>
+          <div class="flash-message flash-message--alert">
+            <%= tag.div flash[:alert], class: "fullsize-container" %>
+          </div>
+        <% end %>
+        <% if flash[:notice] %>
+          <div class="flash-message flash-message--notice">
+            <%= tag.div flash[:notice], class: "fullsize-container", id: "flash_message" %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="main-container">
+        <main class="fullsize-container">
+          <%= yield %>
+        </main>
+      </div>
+
+      <div class="color-strip"></div>
+
+      <%= render "shared/footer" %>
+    </div>
+  </body>
+</html>

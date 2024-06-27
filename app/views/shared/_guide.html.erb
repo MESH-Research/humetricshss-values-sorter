@@ -1,0 +1,154 @@
+<div class="modal_outer modal_hidden" id="modal_1" data-auto-show="<%= session[:show_signup_banner] %>">
+  <div class="modal_inner">
+    <div id="slide_0" class="modal_slide">
+      <div class="intro_slide">
+        <section class="slide_upper">
+          <%= image_pack_tag "logo_slide.png", class: "slide_image", alt: "Humetrics Logo" %>
+        </section>
+        <section class="slide_lower">
+          <h1 class="lower_header">Welcome to the HuMetricsHSS Values-Sorter</h1>
+          <p class="lower_text">Thanks for your interest in the site! This guide will walk you through several ways you can use it: interacting with the public, published HuMetricsHSS library; using and sharing your private, personal library; and, if you have signed up to be a contributor, submitting your advice to the main site.</p>
+          <div class="progress_shell">
+            <div class="progress_bar">
+              <div class="progress_circle active" id="circle_1"></div>
+              <div class="progress_circle" id="circle_2"></div>
+              <div class="progress_circle" id="circle_3"></div>
+              <div class="progress_circle" id="circle_4"></div>
+              <div class="progress_circle" id="circle_5"></div>
+              <div class="progress_circle" id="circle_6"></div>
+            </div>
+          </div>
+          <div class="lower_btn_shell">
+            <button class="skip_btn" id="close_btn">Skip</button>
+            <button class="cont_btn" id="continue_0">Continue</button>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div id="slide_1" class="modal_slide modal_hidden">
+      <section class="slide_upper">
+      <%= image_pack_tag "slide_1.png", class: "slide_image", alt: "Homepage Image" %>
+      </section>
+      <section class="slide_lower">
+        <h1 class="lower_header">Homepage</h1>
+        <p class="lower_text">When you’re signed in, the homepage will display the two main ways for you to interact with the site. First, the published HuMetricsHSS library, which is usable by anyone who visits the site. Second, your own private library of values, activities, and advice that you can build out for your own purposes.</p>
+        <div class="progress_shell">
+          <div class="progress_bar">
+            <div class="progress_circle" id="circle_1"></div>
+            <div class="progress_circle active" id="circle_2"></div>
+            <div class="progress_circle" id="circle_3"></div>
+            <div class="progress_circle" id="circle_4"></div>
+            <div class="progress_circle" id="circle_5"></div>
+            <div class="progress_circle" id="circle_6"></div>
+          </div>
+        </div>
+        <div class="lower_btn_shell">
+          <button class="skip_btn" id="back_1">Back</button>
+          <button class="cont_btn" id="continue_1">Continue</button>
+        </div>
+      </section>
+    </div>
+    <div id="slide_2" class="modal_slide modal_hidden">
+      <section class="slide_upper">
+      <%= image_pack_tag "slide_2.png", class: "slide_image", alt: "Published Library Image" %>
+      </section>
+      <section class="slide_lower">
+        <h1 class="lower_header">Published Library</h1>
+        <p class="lower_text">The HuMetricsHSS Published library functions the same when you’re logged in as when you’re not—select a value and activity, and all of the associated advice (submitted by you and others) will be displayed. When logged in, you will be able to favorite and save pieces of advice, as well as add them into your own personal library.</p>
+        <div class="progress_shell">
+          <div class="progress_bar">
+            <div class="progress_circle" id="circle_1"></div>
+            <div class="progress_circle" id="circle_2"></div>
+            <div class="progress_circle active" id="circle_3"></div>
+            <div class="progress_circle" id="circle_4"></div>
+            <div class="progress_circle" id="circle_5"></div>
+            <div class="progress_circle" id="circle_6"></div>
+          </div>
+        </div>
+        <div class="lower_btn_shell">
+          <button class="skip_btn" id="back_2">Back</button>
+          <button class="cont_btn" id="continue_2">Continue</button>
+        </div>
+      </section>
+    </div>
+    <div id="slide_3" class="modal_slide modal_hidden">
+      <section class="slide_upper">
+      <%= image_pack_tag "slide_3.png", class: "slide_image", alt: "Advice image" %>
+      </section>
+      <section class="slide_lower">
+        <h1 class="lower_header">Contribute Advice (After Approval as Contributor)</h1>
+        <p class="lower_text">If you’d like to submit a piece of advice from your library to the main HuMetricsHSS library, you will be able to do so from your library page. You can submit advice drawing on values and activities that already exist in the HuMetricsHSS library, or submit the entire value + activity + advice chain. <%= link_to "Apply to be a contributor", new_contributor_application_path, class: "inline-link" %></p>
+        <div class="progress_shell">
+          <div class="progress_bar">
+            <div class="progress_circle" id="circle_1"></div>
+            <div class="progress_circle" id="circle_2"></div>
+            <div class="progress_circle" id="circle_3"></div>
+            <div class="progress_circle active" id="circle_4"></div>
+            <div class="progress_circle" id="circle_5"></div>
+            <div class="progress_circle" id="circle_6"></div>
+          </div>
+        </div>
+        <div class="lower_btn_shell">
+          <button class="skip_btn" id="back_3">Back</button>
+          <button class="cont_btn" id="continue_3">Continue</button>
+        </div>
+      </section>
+    </div>
+    <div id="slide_4" class="modal_slide modal_hidden">
+      <section class="slide_upper">
+      <%= image_pack_tag "slide_4.png", class: "slide_image", alt: "Library management image" %>
+      </section>
+      <section class="slide_lower">
+        <h1 class="lower_header">Manage Your Library</h1>
+        <p class="lower_text">From your library page, you will be able to add activities, values, and advice as you see fit. You will also be able to add guests to your library.</p>
+        <div class="progress_shell">
+          <div class="progress_bar">
+            <div class="progress_circle" id="circle_1"></div>
+            <div class="progress_circle" id="circle_2"></div>
+            <div class="progress_circle" id="circle_3"></div>
+            <div class="progress_circle" id="circle_4"></div>
+            <div class="progress_circle  active" id="circle_5"></div>
+            <div class="progress_circle" id="circle_6"></div>
+          </div>
+        </div>
+        <div class="lower_btn_shell">
+          <button class="skip_btn" id="back_4">Back</button>
+          <button class="cont_btn" id="continue_4">Continue</button>
+        </div>
+      </section>
+    </div>
+    <div id="slide_5" class="modal_slide modal_hidden">
+      <section class="slide_upper">
+        <div class="upper_text_shell">
+          <h1 class="upper_header">Invitation</h1>
+          <p class="upper_text_box">Join my HuMetrics Library! <br> <br>
+HuMetricsHSS is an initiative for rethinking humane indicators of excellence in academia, focused particularly on the humanities and social sciences (HSS). I’m using this tool to guide thinking to a more values-enacted approach to all kinds of academic work. I’ve created my own library with a set of values and activities. <br> <br>
+Click this link to join my library: (insert your personal invitation link here)</p>
+        <textarea class="modal_hidden" id="invite_text">Join my HuMetrics Library!
+HuMetricsHSS is an initiative for rethinking humane indicators of excellence in academia, focused particularly on the humanities and social sciences (HSS). I’m using this tool to guide thinking to a more values-enacted approach to all kinds of academic work. I’ve created my own library with a set of values and activities.
+Click this link to join my library: (insert your personal invitation link here)
+</textarea>
+        <div class="button button--primary" id="copy_invite_btn">Copy Invitation</div>
+        </div>
+      </section>
+      <section class="slide_lower">
+        <h1 class="lower_header">Inviting Guests</h1>
+        <p class="lower_text">Guests are other logged-in users who will be able to view the contents of your library. They cannot add or remove your advice, only view it the way users can view the contents of the HuMetricsHSS Library.</p>
+        <div class="progress_shell">
+          <div class="progress_bar">
+            <div class="progress_circle" id="circle_1"></div>
+            <div class="progress_circle" id="circle_2"></div>
+            <div class="progress_circle" id="circle_3"></div>
+            <div class="progress_circle" id="circle_4"></div>
+            <div class="progress_circle" id="circle_5"></div>
+            <div class="progress_circle  active" id="circle_6"></div>
+          </div>
+        </div>
+        <div class="lower_btn_shell">
+          <button class="skip_btn" id="back_5">Back</button>
+          <button class="cont_btn" id="continue_5">Close</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

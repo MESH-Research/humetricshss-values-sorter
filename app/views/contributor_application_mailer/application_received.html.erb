@@ -1,0 +1,13 @@
+<h1 style="font-size: 2.488em; font-weight: 400; color: #01a499; font-size: 1.440em; margin: 0.579em 0;">
+  <%= @contributor_application.user.full_name %> is interested in becoming a Contributor!
+</h1>
+
+<p style="line-height: 1.440em">
+  Click the link below to view, accept, or decline their application.
+</p>
+
+<%= link_to "View Application",
+            admin_contributor_application_url(@contributor_application),
+            style: "background-color: #f26f21; border: 0; border-radius: 0.579em; box-sizing: border-box; color: #fff;
+                    display: inline-block; font-weight: 600; margin: 2.488em 0; padding: 0.833em 2.986rem;
+                    text-decoration: none;" %>

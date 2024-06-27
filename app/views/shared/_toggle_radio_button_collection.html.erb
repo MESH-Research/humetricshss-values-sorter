@@ -1,0 +1,20 @@
+<div class="toggle-radio-button-collection">
+  <%= tag.h3 legend_text, class: "legend show-when-large" if defined?(legend_text) %>
+  <div class="toggle-radio-button-array">
+    <%= form.collection_radio_buttons *builder_args do |builder| %>
+      <%= builder.radio_button(class: "toggle-radio-button", checked: builder.object == selected_value) %>
+      <%= builder.label(class: "button button--toggle toggle-radio-button-label") do %>
+        <%# TRICKY: We override the label content when told to, but we always get a block, so we can't use block_given? %>
+        <% yielded_content = yield builder.object %>
+        <% if yielded_content.present? %>
+          <%= yielded_content %>
+        <% else %>
+          <%= builder.text.humanize %>
+        <% end %>
+      <% end %>
+    <%# TRICKY: The radio buttons and labels in this collection are span elements, so any whitespace between them is
+        rendered to the page as actual space. This is undesirable given our styling, so we use the hack below to remove
+        it. Though unlikely to matter: this removes space between angle braces _naively_ %>
+    <% end.gsub(/>\s*</, "><").html_safe %>
+  </div>
+</div>

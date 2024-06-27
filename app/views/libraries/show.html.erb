@@ -1,0 +1,68 @@
+<div id="library-landing">
+  <section>
+    <% if user_signed_in? %>
+      <div class="header-links">
+        <div class="left-align">
+          <%= link_to libraries_path, class: "link--padded" do %>
+            <%= tag.i class: "fas fa-chevron-left" %>
+            Back
+          <% end %>
+        </div>
+
+        <% if @library.owner == current_user %>
+          <div>
+            <%= link_to edit_library_path(@library), class: "link--padded" do %>
+              <%= tag.i class: "fas fa-book-open" %>
+              Manage Library
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= tag.h1 library_display_name(@library, viewer: current_user) %>
+    <% else %>
+      <h1>
+        <div class="slogan-line">Live your values.</div>
+        <div class="slogan-line">Transform the academy.</div>
+      </h1>
+      <p>
+        HuMetricsHSS is an initiative for rethinking humane indicators of excellence in academia, focused particularly on the
+        humanities and social sciences (HSS). Use this tool to guide you thinking to a more values-enacted approach to all
+        kinds of academic work.
+      </p>
+    <% end %>
+
+    <%= form_with url: library_advice_index_path(@library), method: :get, data: { controller: "require-selection", "require-selection-target": "form" } do |form| %>
+      <%= render "shared/toggle_checkbox_collection",
+        form: form,
+        legend_text: "Select activities",
+        builder_args: ["activity_ids", @activities, :id, :name],
+        icon_class_method: :icon_class,
+        selected_values: @params[:activity_ids] do |activity| %>
+          <%= tag.i(class: activity.icon_class) %>
+          <%= activity.name.humanize %>
+        <% end %>
+      <%= render "shared/toggle_checkbox_collection",
+        form: form,
+        legend_text: "Select values",
+        builder_args: ["value_ids", @values, :id, :name],
+        selected_values: @params[:value_ids] do |value| %>
+          <%= tag.i(class: value.icon_class) %>
+          <%= value.name.humanize %>
+        <% end %>
+        <div class="search-shell">
+          <div class="search-box" id="search-box">
+            <%= form.text_field :search_term, class: "search-input form_search", placeholder: "Search Advice..." %>
+            <%= button_tag class: "search-submit" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        </div>
+      <%= form.hidden_field :outer_category, value: @params[:outer_category] %>
+
+      <%= form.submit value: "View advice", name: "view advice", class: "view-advice-button button--primary", data: { disable_with: "View advice", "require-selection-target": "submit" } %>
+    <% end %>
+  </section>
+
+  <%= render "shared/membership_call_to_action" %>
+</div>

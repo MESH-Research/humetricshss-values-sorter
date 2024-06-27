@@ -1,0 +1,20 @@
+<div class="block-form-wrapper">
+  <h1>Become a contributor</h1>
+
+  <p class="form-instructions">
+    Contributors to the Values-Sorter can create values, activities, and advice to be added to the larger HuMetricsHSS
+    library, for use by all visitors to the site
+  </p>
+
+  <%= simple_form_for @contributor_application do |f| %>
+    <%= f.input :first_name, disabled: true, input_html: { value: current_user.first_name } %>
+    <%= f.input :last_name, disabled: true, input_html: { value: current_user.last_name } %>
+    <%= f.input :email, disabled: true, input_html: { value: current_user.email } %>
+
+    <%= f.input :discovery, label: "How did you find out about the HuMetricsHSS Initiative?", input_html: { autofocus: true } %>
+    <%= f.input :interest, label: "Why are you interested in being a contributor?" %>
+    <%= f.input :perspective, label: "From what perspective (institutional, professional role, personal, etc.) are you contributing values, activities, and advice?" %>
+
+    <%= f.button :submit, "Apply to be a contributor", class: "button--primary button--fullwidth" %>
+  <% end %>
+</div>

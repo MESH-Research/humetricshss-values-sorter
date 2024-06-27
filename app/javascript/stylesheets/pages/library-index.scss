@@ -1,0 +1,19 @@
+#library-link-grid {
+  margin-top: $size-very-large-1;
+}
+
+#library-link-grid .button-grid-button {
+  font-size: $size-large-1;
+
+  i {
+    font-size: $size-very-large-1;
+  }
+
+  img {
+    display: block;
+    font-size: 4.29982em;
+    height: 1em;
+    margin: 0 auto $size-small-3;
+  }
+}
+

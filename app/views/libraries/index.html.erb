@@ -1,0 +1,16 @@
+<div>
+  <section>
+    <div id="library-link-grid" class="button-grid">
+      <% @libraries.each do |library| %>
+        <div class="button-grid-cell">
+          <%= link_to library_path(library), class: "button-grid-button button button--outline button--fullwidth" do %>
+            <%= library_icon_tag(library) %>
+            <%= library_display_name(library, viewer: current_user) %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <%= render "shared/membership_call_to_action" %>
+</div>

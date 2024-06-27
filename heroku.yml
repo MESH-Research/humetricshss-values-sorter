@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: heroku.Dockerfile
+release:
+  image: web
+  command:
+    - bin/rails db:migrate && bin/rails db:seed
+run:
+  web: bin/rails server -b '0.0.0.0' -p $PORT

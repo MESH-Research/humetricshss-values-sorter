@@ -1,0 +1,54 @@
+%focusable {
+  &:focus {
+    outline: 1px dotted $color-grey;
+  }
+}
+
+@mixin hide-when-large {
+  @media (min-width: $screen-width-large-min) {
+    display: none;
+  }
+}
+
+@mixin show-when-large {
+  @media (max-width: $screen-width-large-min) {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hide-when-large {
+  @include hide-when-large;
+}
+
+.show-when-large {
+  @include show-when-large;
+}
+
+@mixin fullsize-container {
+  margin: 0 auto;
+  max-width: $size-container-full;
+}
+
+.fullsize-container {
+  @include fullsize-container;
+}
+
+@mixin halfsize-container {
+  margin: 0 auto;
+
+  @media (min-width: $screen-width-medium-min) {
+    width: $size-container-half;
+  }
+}
+
+.halfsize-container {
+  @include halfsize-container;
+}
+
+.left-align {
+  text-align: left;
+}

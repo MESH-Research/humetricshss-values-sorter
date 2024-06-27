@@ -1,0 +1,15 @@
+#library-landing .header-links {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+#library-landing .slogan-line {
+  @media (min-width: $screen-width-medium-min) {
+    display: inline;
+  }
+}
+
+#library-landing .view-advice-button {
+  font-size: $size-normal;
+}

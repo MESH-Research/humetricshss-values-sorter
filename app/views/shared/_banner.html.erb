@@ -1,0 +1,31 @@
+<header class="banner">
+  <div class="banner-container">
+    <div class="banner-content">
+      <%= link_to root_path, class: "banner-link" do %>
+        <%= image_pack_tag "logo.png", class: "logo", alt: "HuMetricsHHS Logo" %>
+      <% end %>
+
+      <div class="account-actions">
+        <%= form_with url: library_advice_index_path(@library || Library.main), method: :get do |form| %>
+          <div class="banner-search-shell">
+            <div class="search-box banner-search" id="search-box">
+              <%= form.text_field :search_term, class: "search-input", placeholder: "Search Advice..." %>
+                <%= button_tag( :class => "search-submit") do %>
+                  <i class="fas fa-search"></i>
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, class: "link--padded", method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: "link--padded" %>
+        <% end %>
+
+        <% unless user_signed_in? %>
+          <%= link_to "Sign up", new_user_registration_path, id: "button-sign-up", class: "button button--inline button--primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

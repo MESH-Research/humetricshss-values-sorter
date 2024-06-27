@@ -1,0 +1,20 @@
+<%= simple_form_for [library, value] do |f| %>
+  <%= f.input :name, placeholder: "equality" %>
+
+  <div class="button-group">
+    <%= f.button :submit, "Save Value", class: "button--primary" %>
+
+    <% if value.persisted? %>
+      <%= link_to_if value.advice.none?,
+                     "Delete Value",
+                     library_value_path(library, value),
+                     method: :delete,
+                     "data-confirm": "Are you sure you want to delete this Value?",
+                     class: "button button--secondary" do %>
+        <%= tag.span "Delete Value",
+                     class: "button button--secondary disabled",
+                     title: "Update or delete connected Advice before deleting this Value" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

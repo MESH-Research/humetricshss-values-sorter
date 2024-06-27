@@ -1,0 +1,92 @@
+////
+/// Active Material
+/// A redesign of ActiveAdmin that follows Material Design standards
+/// www.google.com/design/spec/material-design/introduction.html
+/// @author Viget Labs
+////
+
+// TRICKY: this must be imported first to override AM styles
+@import "./active_material_customizations.scss";
+
+/// $variables, these should always end with !default
+/// so that they can be overriden
+@import "./values/colors";
+@import "./values/units";
+@import "./values/fonts";
+@import "./values/breakpoints";
+@import "./values/elevation";
+
+/// Generators describe functions, mixins, and classes
+/// intended for extension. More or less, they are "style builders"
+/// instead of "style descriptors"
+@import "./generators/functions";
+@import "./generators/mixins";
+
+/// Atoms are individual styles to enhance reusability
+@import "./atoms/clearfix";
+@import "./atoms/color";
+@import "./atoms/family";
+@import "./atoms/fill";
+@import "./atoms/hidden";
+@import "./atoms/links";
+@import "./atoms/lists";
+@import "./atoms/paper";
+@import "./atoms/type";
+
+/// Foundational rules that setup the page
+@import "./global/foundation";
+
+/// Prototypes are collections of mixins that allow for css design
+/// without the constraints of limiting ActiveAdmin selectors
+@import "./prototypes/actions-footer";
+@import "./prototypes/button";
+@import "./prototypes/menu";
+@import "./prototypes/snackbar";
+@import "./prototypes/tabs";
+@import "./prototypes/toolbar";
+@import "./prototypes/avatar";
+@import "./prototypes/datepicker";
+@import "./prototypes/multiselect";
+@import "./prototypes/subheader";
+@import "./prototypes/tag";
+@import "./prototypes/underlay";
+@import "./prototypes/btn-icon";
+@import "./prototypes/dialog";
+@import "./prototypes/select";
+@import "./prototypes/table";
+@import "./prototypes/textfield";
+
+
+/// Components describe actual implementation within Active Admin
+@import "./components/avatar";
+@import "./components/comments";
+@import "./components/filter";
+@import "./components/login";
+@import "./components/select";
+@import "./components/title_bar";
+@import "./components/blank_slate";
+@import "./components/date-select";
+@import "./components/flash";
+@import "./components/overlay";
+@import "./components/sortable";
+@import "./components/utility_nav";
+@import "./components/breadcrumbs";
+@import "./components/datepicker";
+@import "./components/footer";
+@import "./components/pagination";
+@import "./components/structure";
+@import "./components/buttons";
+@import "./components/dialog";
+@import "./components/forms";
+@import "./components/panels";
+@import "./components/tables";
+@import "./components/checkbox";
+@import "./components/dropdown";
+@import "./components/header";
+@import "./components/photo_select";
+@import "./components/tabs";
+@import "./components/clearfix";
+@import "./components/featured-blocks";
+@import "./components/hidden";
+@import "./components/scopes";
+@import "./components/tag";

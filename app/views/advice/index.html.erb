@@ -1,0 +1,77 @@
+<div id="advice-list-controls">
+  <div class="left-align hide-when-large">
+    <%= link_to library_path(@library, @index_params), class: "link--padded" do %>
+      <%= tag.i class: "fas fa-chevron-left" %>
+      Back to selection
+    <% end %>
+  </div>
+
+  <%= form_with url: library_advice_index_path(@library), method: :get, data: { controller: "auto-submit", "auto-submit-target": "form" } do |form| %>
+    <div class="show-when-large">
+
+      <%= render "shared/toggle_checkbox_collection",
+        form: form,
+        legend_text: "Select activities",
+        builder_args: ["activity_ids", @activities, :id, :name],
+        selected_values: @index_params[:activity_ids] do |activity| %>
+          <%= tag.i(class: activity.icon_class) %>
+          <%= activity.name.humanize %>
+        <% end %>
+      <%= render "shared/toggle_checkbox_collection",
+        form: form,
+        legend_text: "Select values",
+        builder_args: ["value_ids", @values, :id, :name],
+        selected_values: @index_params[:value_ids] do |value| %>
+          <%= tag.i(class: value.icon_class) %>
+          <%= value.name.humanize %>
+        <% end %>
+    </div>
+    <div class="search-shell">
+        <div class="search-box" id="search-box">
+          <%= form.text_field :search_term, value: @index_params[:search_term], class: "search-input", placeholder: "Search Advice..." %>
+          <%= button_tag class: "search-submit" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        </div>
+    </div>
+    <%= render "shared/toggle_radio_button_collection",
+      form: form,
+      legend_text: "Group by",
+      builder_args: ["outer_category", @categories, :itself, :humanize],
+      selected_value: @index_params[:outer_category] %>
+
+  <% end %>
+
+</div>
+
+<div id="advice-lists">
+  <% @grouped_advice.outer_categories.sort_by(&:name).each do |outer_category| %>
+    <div class="advice-category-outer">
+      <h1 class="category-header-outer">
+        <%= tag.i class: outer_category.icon_class %>
+        <%= outer_category.name.humanize %>
+      </h1>
+
+      <% @grouped_advice.inner_categories_for(outer_category).sort_by(&:name).each do |inner_category| %>
+        <div class="advice-category-inner">
+          <h2 class="category-header-inner">
+            <%= tag.i class: inner_category.icon_class %>
+            <%= inner_category.name.humanize %>
+          </h2>
+
+          <div class="advice-list-container" data-controller="advice-list" data-advice-list-initial-count-value="3">
+            <ul class="advice-list">
+              <% @grouped_advice.advice_for(outer_category, inner_category).each do |advice| %>
+                <%= render "advice_list_item", library: @library, advice: advice, index_params: @index_params %>
+              <% end %>
+            </ul>
+
+            <button class="link link--padded" type="button" data-advice-list-target="viewMoreButton" data-action="advice-list#showAllListItems">
+              View more
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+#advice-details {
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-normal;
+  }
+}
+
+#advice-details .back-link-container {
+  margin-bottom: $size-large-1;
+
+  @media (min-width: $screen-width-large-min) {
+    margin-bottom: $size-large-5;
+  }
+}
+
+#advice-details .category-header {
+  @media (min-width: $screen-width-medium-min) {
+    display: inline-block;
+    font-size: $size-base;
+  }
+
+  &:first-of-type {
+    margin-right: $rsize-large-4;
+  }
+}
+
+#advice-details .advice-text {
+  font-size: $size-normal;
+
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-large-2;
+  }
+}
+
+#advice-details .advice-attribution {
+  color: $color-teal;
+  font-style: italic;
+}
+
+#advice-details .details-container {
+  text-align: left;
+}

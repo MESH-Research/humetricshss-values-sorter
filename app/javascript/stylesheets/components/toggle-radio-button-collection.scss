@@ -1,0 +1,39 @@
+.toggle-radio-button-collection {
+  .legend {
+    color: $color-black-light;
+  }
+
+  .toggle-radio-button-array {
+    display: inline-flex;
+  }
+
+  .toggle-radio-button {
+    opacity: 0;
+    position: absolute;
+
+    // TRICKY: These style the label when the radio button is checked/focused. The labels must come _directly after_
+    // their radio buttons in order for these rules to work correctly
+    &:checked + .toggle-radio-button-label {
+      @extend %button--toggle-active;
+      cursor: default;
+    }
+
+    &:focus + .toggle-radio-button-label {
+      outline: 1px dotted $color-grey;
+    }
+  }
+
+  .toggle-radio-button-label {
+    display: inline-block;
+
+    &:not(:first-of-type) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    &:not(:last-of-type) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}

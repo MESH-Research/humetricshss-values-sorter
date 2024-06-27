@@ -1,0 +1,26 @@
+<div class="block-form-wrapper">
+  <h1>Invite a new guest to your library</h1>
+
+  <form class="simple_form" data-controller="copy-text">
+    <div class="field text library_guest_invitation">
+      <label class="text" for="library_guest_invitation">Invitation</label>
+      <%# SORRY: Formatting for this textarea is wonky, I know; blame erblint and the fact that browsers are REALLY
+          fickle about textareas' whitespace %>
+      <textarea id="library_guest_invitation" class="text" name="library_guest[invitation]" rows="12"
+        data-copy-text-target="source"><%=
+        <<~INVITATION.strip
+          Join my HuMetrics Library!
+
+          HuMetricsHSS is an initiative for rethinking humane indicators of excellence in academia, focused particularly on the humanities and social sciences (HSS). I’m using this tool to guide thinking to a more values-enacted approach to all kinds of academic work. I’ve created my own library with a set of values and activities.
+
+          Click this link to join my library: #{library_join_url(library_id: @library.id, sharing_code: @library.sharing_code)}
+        INVITATION
+                                       %></textarea>
+    </div>
+    <div class="button-group">
+      <button id="copy-invitation" type="button" class="button button--primary" data-action="copy-text#copyText">
+        Copy Invitation
+      </button>
+    </div>
+  </form>
+</div>

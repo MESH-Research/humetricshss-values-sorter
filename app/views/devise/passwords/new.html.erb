@@ -1,0 +1,13 @@
+<div class="block-form-wrapper">
+  <h1>Forgot your password</h1>
+
+  <p class="form-instructions">
+    Please enter your email, and we will send you a link to reset your password.
+  </p>
+
+  <%= simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f| %>
+    <%= f.input :email, input_html: { autocomplete: "email", autofocus: true } %>
+
+    <%= f.button :submit, "Send link", class: "button--primary button--fullwidth" %>
+  <% end %>
+</div>

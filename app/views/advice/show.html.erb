@@ -1,0 +1,26 @@
+<div id="advice-details">
+  <div class="back-link-container left-align">
+    <%= link_to library_advice_index_path(@library, @index_params), class: "link--padded" do %>
+      <%= tag.i class: "fas fa-chevron-left" %>
+      Back
+    <% end %>
+  </div>
+
+  <h2 class="category-header">
+    <%= tag.i class: @advice.activity.icon_class %>
+    <%= @advice.activity.name.humanize %>
+  </h2>
+  <h2 class="category-header">
+    <%= tag.i class: @advice.value.icon_class %>
+    <%= @advice.value.name.humanize %>
+  </h2>
+
+  <%= tag.h1 @advice.text.humanize, class: "advice-text" %>
+  <% if @advice.attribution.present? %>
+    <%= tag.h3 "Contributed by #{@advice.attribution}", class: "advice-attribution" %>
+  <% end %>
+
+  <p class="details-container">
+    <%= @advice.details %>
+  </div>
+</div>

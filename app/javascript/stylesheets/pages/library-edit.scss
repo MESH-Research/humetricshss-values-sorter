@@ -1,0 +1,23 @@
+#library-edit .table-body--category {
+  grid-template-columns: 1fr auto;
+}
+
+#library-edit .table-body--advice {
+  @media (min-width: $screen-width-large-min) {
+    grid-template-columns: 1fr 1fr 4fr auto;
+  }
+
+  .table-cell {
+    border-bottom: 0;
+    white-space: normal;
+
+    &:nth-child(4n) {
+      border-bottom: 1px solid $color-grey-lighter;
+    }
+
+    @media (min-width: $screen-width-large-min) {
+      border-bottom: 1px solid $color-grey-lighter;
+      white-space: nowrap;
+    }
+  }
+}

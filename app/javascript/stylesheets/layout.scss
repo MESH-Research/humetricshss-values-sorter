@@ -1,0 +1,22 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .main-container {
+    flex: 1 0 auto;
+    margin: $size-small-2 $size-base $size-large-4;
+  }
+}
+
+.color-strip {
+  background-image: linear-gradient(
+    to right,
+    $color-teal 30%,
+    $color-green 30% 50%,
+    $color-orange 50% 65%,
+    $color-red 65% 72%,
+    $color-yellow 72%
+  );
+  height: $size-small-4;
+}

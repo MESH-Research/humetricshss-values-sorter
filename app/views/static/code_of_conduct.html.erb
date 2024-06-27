@@ -1,0 +1,50 @@
+<section>
+  <h1>Creating Private and Shared Libraries</h1>
+  <p>
+    We at HuMetricsHSS are striving to cultivate an academy that’s inclusive, open, collaborative, collegial, and
+    generous. The values sorter application is one tool we offer to the community to enable that work. We welcome you
+    to use this application to create private libraries where you can add your own values and activities. You can share
+    those libraries for use by a small group or team. Each member of your group will need a HuMetricsHSS account;
+    libraries cannot be shared publicly.
+  </p>
+</section>
+
+<section>
+  <h1>Values Sorter Code of Conduct</h1>
+  <p>
+    By signing up for a HuMetricsHSS account, you are agreeing to abide by the following code of conduct:
+  </p>
+  <p>
+    We expect all users of the application to recognize that the scholarly life well-lived does not allow harassment in
+    any form. We are committed to providing a welcoming and safe environment for people of all races and ethnic
+    backgrounds, gender identities and expressions, sexual orientations, physical abilities, physical appearances,
+    socioeconomic backgrounds, nationalities, ages, religions, and beliefs. We strive to provide an online environment
+    that’s free from all forms of harassment, including microaggressions. The creation of content that reinforces
+    social structures of domination related to gender, gender identity or expression, sexual orientation, employment
+    status, physical appearance, body size, race, age, religion, marital status, political affiliation, or physical or
+    cognitive ability is not permitted.
+  </p>
+  <p>
+    We will not actively monitor the content created within the private or shared libraries of this application, but if
+    any user feels that the shared content violates this code of conduct, that user may report the content to the
+    application administrator, who will review the content and remove the shared library. Users who have more than one
+    reported violation will be blocked from using the site. We will not tolerate any violation or circumvention of
+    this code of conduct.
+  </p>
+</section>
+
+<section>
+  <h1>Requesting Values Sorter Contributor Status</h1>
+  <p>
+    We on the HuMetricsHSS team recognize the value of community contributions in all the work we do. The publicly
+    viewable content of the values sorter has been primarily created by the HuMetricsHSS team, but we welcome members
+    of the community to apply to participate as contributors. Contributors must demonstrate an understanding of the
+    HuMetricsHSS values framework and agree with the goals of the initiative. To apply to be a contributor, please
+
+    <% if user_signed_in? %>
+      <%= link_to "click here", new_contributor_application_path %>.
+    <% else %>
+      <%= link_to "click here", new_user_registration_path(user: { contributor_sign_up: "1" }) %>.
+    <% end %>
+  </p>
+</section>

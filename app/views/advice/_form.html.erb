@@ -1,0 +1,18 @@
+<%= simple_form_for [library, advice] do |f| %>
+  <%= f.input :activity, collection: activities, prompt: "Select activity" %>
+  <%= f.input :value, collection: values, prompt: "Select value" %>
+  <%= f.input :text %>
+  <%= f.input :details, as: :rich_text_area %>
+
+  <div class="button-group">
+    <%= f.button :submit, "Save Advice", class: "button--primary" %>
+
+    <% if advice.persisted? %>
+      <%= link_to "Delete Advice",
+                  library_advice_path(library, advice),
+                  method: :delete,
+                  "data-confirm": "Are you sure you want to delete this Advice?",
+                  class: "button button--secondary" %>
+    <% end %>
+  </div>
+<% end %>

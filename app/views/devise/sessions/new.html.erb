@@ -1,0 +1,19 @@
+<div class="block-form-wrapper">
+  <h1>Sign in</h1>
+
+  <%= simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+    <%= f.input :email, input_html: { autocomplete: "email", autofocus: true } %>
+    <%= f.input :password, input_html: { autocomplete: "current-password" } %>
+
+    <%= f.button :submit, "Log in", class: "button--primary button--fullwidth" %>
+  <% end %>
+
+  <%= link_to "Forgot password", new_password_path(resource_name), class: "link--padded" %>
+
+  <%= link_to user_orcid_omniauth_authorize_path, method: :post, class: "button button--orcid button--fullwidth" do %>
+    <div class="orcid-logo-container">
+      <%= image_pack_tag "orcid_id.svg", alt: "ORCID iD logo", class: "orcid-logo" %>
+    </div>
+    <div class="button-text">Continue with ORCID</div>
+  <% end %>
+</div>

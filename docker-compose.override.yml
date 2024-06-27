@@ -1,0 +1,44 @@
+version: '3'
+volumes:
+  database:
+  gems:
+  node_modules:
+services:
+  db:
+    env_file: .env
+    volumes:
+      - database:/var/lib/postgresql/data # persist data between containers
+  mailcatcher:
+    build:
+      context: .
+      dockerfile: mailcatcher.Dockerfile
+    command: mailcatcher --no-quit --foreground --ip=0.0.0.0
+    env_file: .env
+    ports:
+      - "127.0.0.1:1080:1080"
+  webpacker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: "0.0.0.0"
+    volumes:
+      - gems:/root/values_sorter/vendor/bundle # persistent storage == faster updates
+      - node_modules:/root/values_sorter/node_modules # persistent storage == faster updates
+      - .:/root/values_sorter # mounts code as local volume so dev image won't need rebuilds after code changes
+  web:
+    env_file: .env
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: "webpacker"
+    depends_on:
+      - db
+      - mailcatcher
+      - webpacker
+    volumes:
+      - gems:/root/values_sorter/vendor/bundle # persistent storage == faster updates
+      - node_modules:/root/values_sorter/node_modules # persistent storage == faster updates
+      - .:/root/values_sorter # mounts code as local volume so dev image won't need rebuilds after code changes
+      - ./docker.bashrc:/root/.bashrc # allow per-developer bash config
+      - ./docker.bash_history:/root/.bash_history # retain bash cli history in dev
+      - ./docker.pry_history:/root/.pry_history # retail rails cli history in dev

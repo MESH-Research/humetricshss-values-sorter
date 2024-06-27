@@ -1,0 +1,48 @@
+$content-height: $size-large-5;
+$logo-aspect-ratio: 2.6572;
+
+.banner {
+  border-bottom: 1px solid $color-grey-lightest;
+
+  .account-actions {
+    align-items: center;
+    display: flex;
+    height: fit-content;
+  }
+
+  .banner-container {
+    @include fullsize-container;
+
+    padding: $size-base $size-base $size-large-1;
+  }
+
+  .banner-content {
+    align-items: center;
+    display: flex;
+    height: $content-height;
+    justify-content: space-between;
+  }
+
+  .banner-search-shell {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5px;
+    margin-right: 8px;
+    width: 100%;
+  }
+
+  .logo {
+    height: $content-height;
+    width: $content-height * $logo-aspect-ratio;
+  }
+
+  #button-sign-up {
+    margin-left: $rsize-small-1;
+
+    @media (min-width: $screen-width-medium-min) {
+      margin-left: $rsize-large-5;
+    }
+  }
+}

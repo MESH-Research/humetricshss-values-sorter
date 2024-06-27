@@ -1,0 +1,104 @@
+#advice-list-controls {
+  align-items: baseline;
+  display: flex;
+  // TRICKY: When the form is small this will right-justify it and left-justify the link
+  justify-content: space-between;
+}
+
+#advice-list-controls form {
+  // TRICKY: Normally form centers its children and grows horizontally to fill all of the space it can...
+  flex: 1 0 auto;
+  text-align: center;
+
+  label {
+    font-size: $size-small-1;
+  }
+
+  .toggle-checkbox-label {
+    min-height: $size-very-large-1;
+  }
+
+  // TRICKY: ...but when we don't have much space to work with then we'll keep it small and align to the right
+  @media (max-width: $screen-width-large-min) {
+    flex: 0 1 auto;
+    text-align: right;
+  }
+}
+
+#advice-list-controls .toggle-checkbox-label {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+
+  i {
+    margin-bottom: 0;
+    margin-right: $size-small-3;
+  }
+}
+
+#advice-lists .advice-category-outer {
+  margin: $size-large-2 0;
+
+  @media (min-width: $screen-width-large-min) {
+    margin: $size-large-5 0;
+  }
+}
+
+#advice-lists .advice-category-inner {
+  margin: $size-normal 0;
+  text-align: left;
+}
+
+#advice-lists .category-header-outer {
+  font-size: $size-normal;
+
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-large-2;
+  }
+}
+
+#advice-lists .category-header-inner {
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-normal;
+  }
+}
+
+#advice-lists .advice-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#advice-lists .details-link {
+  text-decoration: none;
+
+  &:hover {
+    background-color: $color-teal-lightest;
+  }
+}
+
+#advice-lists .advice-text-container {
+  align-items: center;
+  border: 1px solid $color-grey-lighter;
+  border-radius: $size-small-2;
+  column-gap: $size-small-2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: $size-small-2;
+}
+
+#advice-lists .advice-list-item {
+  margin-top: $size-small-3;
+}
+
+#advice-lists .advice-text {
+  margin: 0;
+}
+
+#advice-lists .advice-attribution {
+  color: $color-teal;
+  font-style: italic;
+  grid-column: 1 / span 2;
+  margin: $size-small-2 0 0;
+}

@@ -1,0 +1,23 @@
+<div class="block-form-wrapper">
+  <%= tag.h1 @sign_up_header %>
+
+  <p class="form-instructions">
+    With your HuMetrics account you will be able to create your own library and invite your team to view your content
+  </p>
+
+  <% case @sign_up_type %>
+  <% when 'email' %>
+    <%= render "email_sign_up_form", resource: resource, resource_name: resource_name %>
+  <% when 'orcid' %>
+    <%= render "orcid_sign_up_form", resource: resource, resource_name: resource_name %>
+  <% else %>
+    <%= link_to "Sign up with email", new_user_registration_path(user: { sign_up_type: "email" }), class: "button button--primary button--fullwidth" %>
+
+    <%= link_to user_orcid_omniauth_authorize_path, method: :post, class: "button button--orcid button--fullwidth" do %>
+      <div class="orcid-logo-container">
+        <%= image_pack_tag "orcid_id.svg", alt: "ORCID iD logo", class: "orcid-logo" %>
+      </div>
+      <div class="button-text">Sign up with ORCID</div>
+    <% end %>
+  <% end %>
+</div>

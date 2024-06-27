@@ -1,0 +1,24 @@
+<li class="advice-list-item" data-advice-list-target="listItem">
+  <% if advice.details.present? %>
+    <%= link_to library_advice_path(library, advice, index_params), id: "advice-link-#{advice.id}", class: "details-link advice-text-container" do %>
+      <%= tag.p advice.text, class: "advice-text" %>
+
+      <span class="link">
+        <span class="show-when-large">More</span>
+        <i class="fas fa-chevron-right"></i>
+      </span>
+
+      <% if advice.attribution.present? %>
+        <%= tag.p "Contributed by #{advice.attribution}", class: "advice-attribution" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div class="advice-text-container">
+      <%= tag.p advice.text, class: "advice-text" %>
+
+      <% if advice.attribution.present? %>
+        <%= tag.p "Contributed by #{advice.attribution}", class: "advice-attribution" %>
+      <% end %>
+    </div>
+  <% end %>
+</li>

@@ -1,0 +1,38 @@
+<%= simple_form_for [library, advice, submission] do |f| %>
+  <label for="advice_submission_custom_activity">Activity</label>
+  <div class="inline-when-large" data-controller="disable-input">
+    <%= f.input :custom_activity, label: false,
+      wrapper_html: { "data-disable-input-target": "disabledClass" },
+      input_html: { "data-disable-input-target": "disabledClass input" } %>
+    <div class="field-margin">OR</div>
+    <%= f.input :published_activity, collection: published_activities, label: false, prompt: "Use a published activity",
+      input_html: { "data-action": "change->disable-input#updateInputState" } %>
+  </div>
+
+  <label for="advice_submission_custom_value">Value</label>
+  <div class="inline-when-large" data-controller="disable-input">
+    <%= f.input :custom_value, label: false,
+      wrapper_html: { "data-disable-input-target": "disabledClass" },
+      input_html: { "data-disable-input-target": "disabledClass input" } %>
+    <div class="field-margin">OR</div>
+    <%= f.input :published_value, collection: published_values, label: false, prompt: "Use a published value",
+      input_html: { "data-action": "change->disable-input#updateInputState" } %>
+  </div>
+
+  <%= f.input :text %>
+  <%= f.input :details, as: :rich_text_area %>
+
+  <div data-controller="disable-input" data-disable-input-property-value="checked">
+    <%= f.input :author_name, label: "Name to be displayed with advice", disabled: submission.anonymous?,
+      wrapper_html: { "data-disable-input-target": "disabledClass" },
+      label_html: { "data-disable-input-target": "disabledClass" },
+      input_html: { "data-disable-input-target": "disabledClass input" } %>
+    <%= f.input :anonymous, as: :boolean, label: "Do not display my name publicly",
+      input_html: { "data-action": "change->disable-input#updateInputState" } %>
+
+  <div class="button-group">
+    <%= f.button :submit, "Submit", class: "button--primary" %>
+
+    <%= link_to "Cancel", edit_library_path(library), class: "button button--secondary" %>
+  </div>
+<% end %>

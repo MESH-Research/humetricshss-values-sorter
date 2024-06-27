@@ -1,0 +1,42 @@
+.toggle-checkbox-collection {
+  .legend {
+    color: $color-black-light;
+  }
+
+  .toggle-checkbox-grid {
+    display: grid;
+    gap: $size-small-2;
+    grid-template-columns: repeat(auto-fill, minmax($rsize-very-large-3-5, 1fr));
+    margin-bottom: $size-large-1;
+  }
+}
+
+.toggle-checkbox-grid-cell {
+  display: flex;
+}
+
+.toggle-checkbox {
+  opacity: 0;
+  position: absolute;
+
+  // TRICKY: These style the label when the checkbox is checked/focused. The labels must come _directly after_ their
+  // checkboxes in order for these rules to work correctly
+  &:checked + .toggle-checkbox-label {
+    @extend %button--toggle-active;
+  }
+
+  &:focus + .toggle-checkbox-label {
+    outline: 1px dotted $color-grey;
+  }
+}
+
+.toggle-checkbox-label {
+  padding: $size-small-1;
+
+  i {
+    color: $color-grey;
+    display: block;
+    font-size: $size-large-1;
+    margin-bottom: $size-small-3;
+  }
+}

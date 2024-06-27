@@ -1,0 +1,25 @@
+<%= simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
+  <%= f.input :sign_up_type, as: "hidden", input_html: { value: "email" } %>
+
+  <%= f.input :first_name, input_html: { autocomplete: "given-name", autofocus: true } %>
+  <%= f.input :last_name, input_html: { autocomplete: "family-name" } %>
+  <%= f.input :email, required: true, input_html: { autocomplete: "email" } %>
+  <%= f.input :password, required: true, input_html: { autocomplete: "new-password" } %>
+  <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+
+  <%= f.input :contributor_sign_up, as: :radio_buttons,
+    label: "Would you like to apply now to become a contributor in order to submit content to be published publically?",
+    collection: [["1", "Yes"], ["0", "No, not right now"]], label_method: :second, value_method: :first %>
+
+  <%= f.input :terms_of_service,
+    label: "I have read and accept the #{link_to("Code of Conduct", code_of_conduct_path, target: "_blank")}".html_safe %>
+
+  <%= f.button :submit, "Create account", class: "button--primary button--fullwidth" %>
+<% end %>
+
+<%= link_to user_orcid_omniauth_authorize_path, method: :post, class: "button button--orcid button--fullwidth" do %>
+  <div class="orcid-logo-container">
+    <%= image_pack_tag "orcid_id.svg", alt: "ORCID iD logo", class: "orcid-logo" %>
+  </div>
+  <div class="button-text">Continue with ORCID</div>
+<% end %>

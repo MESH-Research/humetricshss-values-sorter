@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+require "fileutils"
+require "securerandom"
+
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  # This script is a way to set up or update your development environment automatically.
+  # This script is idempotent, so that you can run it at any time and get an expectable outcome.
+  # Add necessary setup steps to this file.
+
+  puts "\n== Copying sample files =="
+  [
+    %W[sample.env .env],
+    %W[sample.docker.bashrc docker.bashrc],
+    %W[sample.docker.bash_history docker.bash_history],
+    %W[sample.docker.pry_history docker.pry_history]
+  ].each do |sample_path, target_path|
+    next if File.exist?(target_path)
+    FileUtils.cp(sample_path, target_path)
+    puts "created #{target_path}"
+  end
+
+  puts "\n== Ensuring database initialization requirements are met =="
+  env_file = File.open(".env", "r")
+  if env_file.any? { |l| l.match? "{postgres_password_placeholder}" }
+    puts "Press return to generate a strong password for Postgres, or enter one if desired:"
+    pg_pass = gets.chomp
+    pg_pass = SecureRandom.alphanumeric(32) if pg_pass == ""
+
+    env_file.rewind
+    lines = env_file.map { |l| l.gsub("{postgres_password_placeholder}", pg_pass) }
+    File.open(env_file.path, "w") { |file| lines.each { |line| file.write(line) } }
+  end
+
+  puts "\n== Looking for docker-compose =="
+  unless system("which docker-compose > /dev/null")
+    puts "docker-compose could not be found"
+    exit
+  end
+
+  puts "\n== Building Docker container =="
+  system! "docker-compose build"
+
+  puts "\n== Installing gems =="
+  system! "docker-compose run web bundle install --jobs 20 --retry 5"
+
+  puts "\n== Installing packages =="
+  system! "docker-compose run web bin/yarn install"
+
+  puts "\n== Setting up the database =="
+  system! 'docker-compose run web bash -c "../wait && bin/rails db:setup"'
+
+  puts "\n== Removing old logs and tempfiles =="
+  system! 'docker-compose run web bash -c "../wait && bin/rails log:clear tmp:clear"'
+
+  puts "\n== Clearing any remaining containers =="
+  system("docker-compose down")
+
+  puts "\n==    Setup finished successfully!     =="
+  puts   "== `docker-compose up` to start server =="
+  puts   "==    0.0.0.0:3000 to visit homepage   =="
+end

@@ -1,0 +1,78 @@
+@use 'sass:math';
+
+// colors
+$color-black: #000;
+$color-black-light: #000a08;
+$color-grey: #5c5c5c;
+$color-grey-light: #a8a8a8;
+$color-grey-lighter: #ededed;
+$color-grey-lightest: #f7f7f7;
+$color-white: #fff;
+
+$color-teal-dark: #017e76;
+$color-teal: #01a499;
+$color-teal-light: #e3f5f4;
+$color-teal-lightest: #f4fbfa;
+
+$color-orange-light: #fcdbc8;
+$color-orange: #f26f21;
+$color-orange-dark: #e05c0d;
+
+$color-red-light: #fae4e3;
+$color-red: #dc4845;
+
+$color-green: #a0c33a;
+$color-yellow: #eacb49;
+
+$color-text-default: $color-black;
+
+// fonts
+$font-text: 'Open Sans', sans-serif;
+
+// spacing
+
+$size-base: 1em;
+$rsize-base: 1rem;
+$size-ratio: 1.2;
+
+$rsize-small-4: math.div($rsize-base, pow($size-ratio, 7)); // 0.279 ~=  4px @ 16
+$rsize-small-3: math.div($rsize-base, pow($size-ratio, 5)); // 0.402 ~=  6px @ 16
+$rsize-small-2: math.div($rsize-base, pow($size-ratio, 3)); // 0.579 ~=  9px @ 16
+$rsize-small-1: math.div($rsize-base, pow($size-ratio, 1)); // 0.833 ~= 13px @ 16
+$rsize-normal: $rsize-base * pow($size-ratio, 1);  // 1.200 ~= 19px @ 16
+$rsize-large-1: $rsize-base * pow($size-ratio, 2); // 1.440 ~= 23px @ 16
+$rsize-large-2: $rsize-base * pow($size-ratio, 3); // 1.728 ~= 28px @ 16
+$rsize-large-3: $rsize-base * pow($size-ratio, 4); // 2.074 ~= 33px @ 16
+$rsize-large-4: $rsize-base * pow($size-ratio, 5); // 2.488 ~= 40px @ 16
+$rsize-large-5: $rsize-base * pow($size-ratio, 6); // 2.986 ~= 48px @ 16
+$rsize-very-large-1: $rsize-base * pow($size-ratio, 8); // 4.300 ~= 69px @ 16
+$rsize-very-large-2: $rsize-base * pow($size-ratio, 10); // 6.192 ~= 99px @ 16
+$rsize-very-large-3: $rsize-base * pow($size-ratio, 12); // 8.916 ~= 143px @ 16
+$rsize-very-large-3-5: $rsize-base * pow($size-ratio, 13); // 10.699 ~= 171px @ 16
+$rsize-very-large-4: $rsize-base * pow($size-ratio, 14); // 12.839 ~= 205px @ 16
+$rsize-very-large-5: $rsize-base * pow($size-ratio, 16); // 18.488 ~= 296px @ 16
+
+$size-small-4: math.div($size-base, pow($size-ratio, 7)); // 0.279
+$size-small-3: math.div($size-base, pow($size-ratio, 5)); // 0.402
+$size-small-2: math.div($size-base, pow($size-ratio, 3)); // 0.579
+$size-small-1: math.div($size-base, pow($size-ratio, 1)); // 0.833
+$size-normal: $size-base * pow($size-ratio, 1);  // 1.200
+$size-large-1: $size-base * pow($size-ratio, 2); // 1.440
+$size-large-2: $size-base * pow($size-ratio, 3); // 1.728
+$size-large-3: $size-base * pow($size-ratio, 4); // 2.074
+$size-large-4: $size-base * pow($size-ratio, 5); // 2.488
+$size-large-5: $size-base * pow($size-ratio, 6); // 2.986
+$size-very-large-1: $size-base * pow($size-ratio, 8); // 4.300
+$size-very-large-2: $size-base * pow($size-ratio, 10); // 6.192
+$size-very-large-3: $size-base * pow($size-ratio, 12); // 8.916
+$size-very-large-3-5: $size-base * pow($size-ratio, 13); // 10.699
+$size-very-large-4: $size-base * pow($size-ratio, 14); // 12.839
+$size-very-large-5: $size-base * pow($size-ratio, 16); // 18.488
+
+$size-container-full: 62 * $size-base;
+$size-container-half: 31 * $size-base;
+
+// breakpoints
+
+$screen-width-medium-min: 30 * $size-base;
+$screen-width-large-min: 60 * $size-base;

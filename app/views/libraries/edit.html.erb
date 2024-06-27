@@ -1,0 +1,120 @@
+<div id="library-edit">
+  <section>
+    <div class="back-link-container left-align">
+      <%= link_to library_path(@library), class: "link--padded" do %>
+        <%= tag.i class: "fas fa-chevron-left" %>
+        Back
+      <% end %>
+    </div>
+
+    <%= tag.h1 "Manage #{library_display_name(@library, viewer: current_user)}" %>
+
+    <div class="table">
+      <div class="table-heading">
+        <h2>Activities</h2>
+        <%= link_to "+ Add New Activity", new_library_activity_path(@library) %>
+      </div>
+      <div class="table-body table-body--category">
+        <% @activities.each do |activity| %>
+          <%= tag.div activity.name, class: "table-cell" %>
+
+          <div class="table-cell table-cell--actions">
+            <%= link_to edit_library_activity_path(@library, activity) do %>
+              <%= tag.i class: "fas fa-pencil-alt" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="table-heading">
+        <h2>Values</h2>
+        <%= link_to "+ Add New Value", new_library_value_path(@library) %>
+      </div>
+      <div class="table-body table-body--category">
+        <% @values.each do |value| %>
+          <%= tag.div value.name, class: "table-cell" %>
+
+          <div class="table-cell table-cell--actions">
+            <%= link_to edit_library_value_path(@library, value) do %>
+              <%= tag.i class: "fas fa-pencil-alt" %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="table-heading">
+        <h2>Advice</h2>
+        <%= link_to "+ Add New Advice", new_library_advice_path(@library) %>
+      </div>
+      <div class="table-body table-body--advice">
+        <div class="table-cell table-cell--header show-when-large">Activity</div>
+        <div class="table-cell table-cell--header show-when-large">Value</div>
+        <div class="table-cell table-cell--header show-when-large">Text</div>
+        <div class="table-cell table-cell--header show-when-large"><%# header cell for action buttons %></div>
+
+        <% @advice.each do |advice| %>
+          <%= tag.div class: "table-cell" do %>
+            <strong class="hide-when-large">Activity:</strong>
+            <%= tag.span advice.activity.name %>
+          <% end %>
+
+          <%= tag.div class: "table-cell" do %>
+            <strong class="hide-when-large">Value:</strong>
+            <%= tag.span advice.value.name %>
+          <% end %>
+
+          <%= tag.div class: "table-cell" do %>
+            <strong class="hide-when-large">Text:</strong>
+            <%= tag.span advice.text %>
+
+            <% if advice.details.present? %>
+              <div>
+                <%= tag.i class: "fas fa-align-left" %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div class="table-cell table-cell--actions">
+            <%= link_to edit_library_advice_path(@library, advice) do %>
+              <%= tag.i class: "fas fa-pencil-alt" %>
+            <% end %>
+
+            <% if current_user.can_contribute? %>
+              <% if advice.submitted? %>
+                  <%= tag.i class: "fas fa-check-circle", title: "Advice submitted" %>
+              <% else %>
+                <%= link_to new_library_advice_advice_submission_path(@library, advice),
+                  title: "Submit advice to be published in HuMetricsHSS library" do %>
+                  <%= tag.i class: "fas fa-share-square" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="table">
+      <div class="table-heading">
+        <h2>Guests</h2>
+        <%= link_to "+ Invite Guest", new_library_library_guest_path(@library) %>
+      </div>
+      <div class="table-body table-body--category">
+        <% @library_guests.each do |library_guest| %>
+          <%= tag.div class: "table-cell" do %>
+            <%= tag.div library_guest.guest.full_name %>
+            <%= tag.div"Accepted #{library_guest.created_at.strftime("%m/%d/%Y")}", class: "table-cell-subtext" %>
+          <% end %>
+
+          <div class="table-cell table-cell--actions">
+            <%= link_to "Remove", library_library_guest_path(@library, library_guest), method: :delete, "data-confirm": "Are you sure?" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>

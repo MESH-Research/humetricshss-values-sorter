@@ -1,0 +1,15 @@
+.flash-messages {
+  .flash-message {
+    padding: $size-small-1 $rsize-small-1;
+
+    &.flash-message--alert {
+      background-color: $color-red-light;
+      color: $color-red;
+    }
+
+    &.flash-message--notice {
+      background-color: $color-teal-light;
+      color: $color-teal;
+    }
+  }
+}

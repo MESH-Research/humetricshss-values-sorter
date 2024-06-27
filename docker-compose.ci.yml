@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    environment:
+      POSTGRES_PASSWORD: unsecured
+  web:
+    environment:
+      APP_DOMAIN: localhost
+      APPLICATION_MAILER_FROM: noreply@example.com
+      ASSET_HOST: http://localhost:3000
+      POSTGRES_PASSWORD: unsecured
+      RACK_ENV: test
+      RAILS_ENV: test
+      RAILS_LOG_TO_STDOUT: enabled
+      REPORT_ABUSE_EMAIL_ADDRESS: reportabuse@example.com
+    volumes:
+      - .:/root/values_sorter # mounts code as local volume for faster ci builds
+      - ./vendor/bundle:/root/values_sorter/vendor/bundle # can restore gems from cache
+      - ./node_modules:/root/values_sorter/node_modules # can restore node modules from cache

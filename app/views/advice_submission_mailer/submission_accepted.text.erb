@@ -1,0 +1,5 @@
+We appreciate your contribution, <%= @advice_submission.submitter.full_name %>!
+
+Thank you for your submission to the HuMetricsHSS Values Sorter global library. We’re pleased to inform you that your submission has been accepted and added to the site’s main page. You can view it by clicking the link below or coping the address into your browser.
+
+Submission link: <%= library_advice_url(@advice_submission.published_advice.library, @advice_submission.published_advice) %>

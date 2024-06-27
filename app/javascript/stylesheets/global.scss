@@ -1,0 +1,93 @@
+*,
+*::after,
+*::before {
+  @extend %focusable;
+
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-text;
+  font-size: 100%;
+  font-weight: 400;
+  line-height: $size-ratio;
+  text-align: center;
+}
+
+body {
+  background-color: $color-white;
+  color: $color-text-default;
+}
+
+section {
+  padding-bottom: $size-very-large-2;
+
+  &:not(:first-of-type) {
+    padding-top: $size-very-large-2;
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $color-grey-lighter;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  margin: $size-small-2 0;
+}
+
+h1 {
+  color: $color-teal;
+  font-size: $size-large-1;
+
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-large-4;
+  }
+}
+
+h2 {
+  color: $color-black-light;
+  font-size: $size-base;
+
+  @media (min-width: $screen-width-large-min) {
+    font-size: $size-large-2;
+  }
+}
+
+h3 {
+  color: $color-black-light;
+  font-size: $size-base;
+}
+
+p {
+  color: $color-grey;
+  line-height: $size-large-1;
+}
+
+%link {
+  @extend %focusable;
+
+  background-color: transparent;
+  border-radius: 0;
+  color: $color-orange;
+  font-weight: 400;
+  text-decoration: none;
+  width: unset;
+
+  &.link--padded {
+    display: inline-block;
+    padding: $size-small-1 0;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: $color-orange-dark;
+  }
+}
+
+a,
+.link {
+  @extend %link;
+}

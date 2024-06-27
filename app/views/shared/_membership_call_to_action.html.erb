@@ -1,0 +1,30 @@
+<% unless user_signed_in? %>
+  <section class="call-to-action">
+    <h1>Create your own library</h1>
+    <p>
+      Sign up to be a member of HuMetricsHSS and create your own library of values, activities, and advice like the
+      one modelled above. Choose content from our library or create your own. Personal libraries are shareable among
+      members of your team and community who also have HuMetricsHSS accounts, but cannot be shared publicly or
+      accessed without invitation.
+    </p>
+
+    <%= link_to "Sign up for an account", new_user_registration_path, class: "button button--primary" %>
+  </section>
+<% end %>
+
+<% unless current_user&.contributor_application.present? || current_user&.can_contribute? %>
+  <section class="call-to-action">
+    <h1>Apply to become a contributor</h1>
+    <p>
+      Contributors to the Values-Sorter can create values, activities, and advice to be added to the larger
+      HuMetricsHSS library, for use by all visitors to the site. You can apply to be a contributor upon sign-up for a
+      membership, or wait and upgrade at any time.
+    </p>
+
+    <% if user_signed_in? %>
+      <%= link_to "Apply to be a contributor", new_contributor_application_path, class: "button button--primary" %>
+    <% else %>
+      <%= link_to "Apply to be a contributor", new_user_registration_path(user: { contributor_sign_up: "1" }), class: "button button--primary" %>
+    <% end %>
+  </section>
+<% end %>

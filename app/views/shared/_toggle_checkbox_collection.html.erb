@@ -1,0 +1,19 @@
+<div class="toggle-checkbox-collection">
+  <%= tag.h3 legend_text, class: "legend" if defined?(legend_text) %>
+  <div class="toggle-checkbox-grid">
+    <%= form.collection_check_boxes *builder_args do |builder| %>
+      <div class="toggle-checkbox-grid-cell">
+        <%= builder.check_box(class: "toggle-checkbox", checked: selected_values&.include?(builder.object.id)) %>
+        <%= builder.label(class: "button button--toggle button--fullwidth toggle-checkbox-label") do %>
+          <%# TRICKY: We override the label content when told to, but we always get a block, so we can't use block_given? %>
+          <% yielded_content = yield builder.object %>
+          <% if yielded_content.present? %>
+            <%= yielded_content %>
+          <% else %>
+            <%= builder.text.humanize %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

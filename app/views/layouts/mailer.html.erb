@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html style="font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 400; line-height: 1.2;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body style="background-color: #fff; color: #5c5c5c; margin: 0; max-width: 600px;">
+    <div id="page-wrapper" style="display: flex; flex-direction: column; min-height: 100vh;">
+      <div id="logo-wrapper" style="margin: 2.074em 4.300rem;">
+        <%= image_pack_tag "logo.png", alt: "HuMetricsHHS Logo", style: "height: 4.300rem; width: 11.426rem;" %>
+      </div>
+
+      <div id="content-wrapper" style="flex: 1 0 auto; padding: 0 4.300rem;">
+        <%= yield %>
+      </div>
+
+      <div id="color-strip"
+        style="background-image: linear-gradient(
+          to right,
+          #01a499 30%, #a0c33a 30% 50%, #f26f21 50% 65%, #dc4845 65% 72%, #eacb49 72%
+        ); height: 0.279em;"></div>
+
+      <footer style="padding: 1.728em 4.300rem 2.986em;">
+        Have questions?
+        <a id="contact-link"
+          style="color: #5c5c5c; padding: 0.833em 0; text-decoration: underline;"
+          href="https://humetricshss.org/about/contact-us/"
+          target="_blank">Contact Us</a>
+      </footer>
+    </div>
+  </body>
+</html>

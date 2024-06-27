@@ -1,0 +1,26 @@
+{
+  "name": "HuMetricsHSS Values Sorter",
+  "repository": "https://github.com/mhs/humetricshss-values-sorter",
+  "stack": "container",
+  "env": {
+    "SMTP_ADDRESS": "smtp.sendgrid.net",
+    "SMTP_DOMAIN": "heroku.com",
+    "SMTP_PORT": 587,
+    "RACK_ENV": "production",
+    "RAILS_ENV": "production",
+    "RAILS_LOG_TO_STDOUT": "enabled",
+    "RAILS_SERVE_STATIC_FILES": "enabled"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "as": "DATABASE"
+    },
+    "sendgrid:starter"
+  ]
+}
